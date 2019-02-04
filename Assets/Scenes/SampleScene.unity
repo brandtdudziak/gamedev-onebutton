@@ -1870,16 +1870,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9147983916382447785, guid: 8178e8f43cb2e46b8a4173e388d1e95a,
-        type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9147983916382447785, guid: 8178e8f43cb2e46b8a4173e388d1e95a,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4396070873853497064, guid: 8178e8f43cb2e46b8a4173e388d1e95a,
         type: 3}
       propertyPath: rockKey
@@ -1894,6 +1884,16 @@ PrefabInstance:
         type: 3}
       propertyPath: scissorsKey
       value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147983916382447785, guid: 8178e8f43cb2e46b8a4173e388d1e95a,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147983916382447785, guid: 8178e8f43cb2e46b8a4173e388d1e95a,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8178e8f43cb2e46b8a4173e388d1e95a, type: 3}
