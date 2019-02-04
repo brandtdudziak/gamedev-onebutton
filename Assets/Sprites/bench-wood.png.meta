@@ -3,6 +3,7 @@ guid: 4b1122dda5ac2483894c88b25a5e9d18
 TextureImporter:
   fileIDToRecycleName:
     21300000: bench-wood_0
+    21300002: bench_piece
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -93,13 +94,33 @@ TextureImporter:
         width: 60
         height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 0299bdd40c1f142c6aa4b7044e8b2a66
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bench_piece
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 70
+        width: 9
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b7e22807bc14707b16ac911b843ea5
       vertices: []
       indices: 
       edges: []

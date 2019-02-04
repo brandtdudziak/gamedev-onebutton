@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: b89d9377027294811ad9766fcf28d8f1
+guid: dd34fb5eb710e488789d1c3730896df1
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Paper_0
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -41,12 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 700
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -83,31 +82,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Paper_0
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 27
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64926a724b2a54e2280097f65075a20d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a1c56689938444b5aa0a945aa8ff3cc4
+    spriteID: cb3ab78f1fabf4f308bc33785a9e29c5
     vertices: []
     indices: 
     edges: []

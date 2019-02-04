@@ -8,6 +8,8 @@ public class TurnManager : MonoBehaviour
     //Rock = 1, Paper = 2, Scissor = 3
     private int player1Input = 0;
     private int player2Input = 0;
+    public GameObject playerOne;
+    public GameObject playerTwo;
 
     // Start is called before the first frame update
     void Start()
@@ -103,18 +105,24 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 1 && player2Input == 2)
         {
             //Player 2 Wins
+            playerOne.GetComponent<PlayerMovement>().MoveLeft();
+            playerTwo.GetComponent<PlayerMovement>().MoveLeft();
             //Check for win
             state = 0;
         }
         else if (player1Input == 1 && player2Input == 3)
         {
             //Player 1 Wins
+            playerOne.GetComponent<PlayerMovement>().MoveRight();
+            playerTwo.GetComponent<PlayerMovement>().MoveRight();
             //Check for win
             state = 0;
         }
         else if (player1Input == 2 && player2Input == 1)
         {
             //Player 1 Wins
+            playerOne.GetComponent<PlayerMovement>().MoveRight();
+            playerTwo.GetComponent<PlayerMovement>().MoveRight();
             //Check for win
             state = 0;
         }
@@ -127,18 +135,24 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 2 && player2Input == 3)
         {
             //Player 2 Wins
+            playerOne.GetComponent<PlayerMovement>().MoveLeft();
+            playerTwo.GetComponent<PlayerMovement>().MoveLeft();
             //Check for win
             state = 0;
         }
         else if (player1Input == 3 && player2Input == 1)
         {
             //Player 2 Wins
+            playerOne.GetComponent<PlayerMovement>().MoveLeft();
+            playerTwo.GetComponent<PlayerMovement>().MoveLeft();
             //Check for win
             state = 0;
         }
         else if (player1Input == 3 && player2Input == 2)
         {
             //Player 1 Wins
+            playerOne.GetComponent<PlayerMovement>().MoveRight();
+            playerTwo.GetComponent<PlayerMovement>().MoveRight();
             //Check for win
             state = 0;
         }
