@@ -10,6 +10,15 @@ public class TurnManager : MonoBehaviour
     private int player2Input = 0;
     public GameObject playerOne;
     public GameObject playerTwo;
+    public GameObject checkMark;
+    public GameObject rock;
+    public GameObject paper;
+    public GameObject scissor;
+
+    private GameObject clone1;
+    private GameObject clone2;
+    private GameObject cMark1;
+    private GameObject cMark2;
 
     // Start is called before the first frame update
     void Start()
@@ -27,31 +36,37 @@ public class TurnManager : MonoBehaviour
                 {
                     state = 2;
                     player1Input = 1;
+                    PlaceCheckMark(0);
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
                     state = 2;
                     player1Input = 2;
+                    PlaceCheckMark(0);
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     state = 2;
                     player1Input = 3;
+                    PlaceCheckMark(0);
                 }
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     state = 1;
                     player2Input = 1;
+                    PlaceCheckMark(1);
                 }
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     state = 1;
                     player2Input = 2;
+                    PlaceCheckMark(1);
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     state = 1;
                     player2Input = 3;
+                    PlaceCheckMark(1);
                 }
                 break;
             case 1:
@@ -59,16 +74,19 @@ public class TurnManager : MonoBehaviour
                 {
                     state = 3;
                     player1Input = 1;
+                    PlaceCheckMark(0);
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
                     state = 3;
                     player1Input = 2;
+                    PlaceCheckMark(0);
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     state = 3;
                     player1Input = 3;
+                    PlaceCheckMark(0);
                 }
                 break;
             case 2:
@@ -76,31 +94,39 @@ public class TurnManager : MonoBehaviour
                 {
                     state = 3;
                     player2Input = 1;
+                    PlaceCheckMark(1);
                 }
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     state = 3;
                     player2Input = 2;
+                    PlaceCheckMark(1);
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     state = 3;
                     player2Input = 3;
+                    PlaceCheckMark(1);
                 }
                 break;
             case 3:
-                rpsResolve();
+                RpsResolve();
+                StartCoroutine(DisplayResult());
+                state = 4;
+                break;
+            case 4:
                 break;
         }
     }
 
-    void rpsResolve()
+    void RpsResolve()
     {
         if (player1Input == 1 && player2Input == 1)
         {
             //Draw
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 1 && player2Input == 2)
         {
@@ -108,7 +134,8 @@ public class TurnManager : MonoBehaviour
             playerOne.GetComponent<PlayerMovement>().MoveLeft();
             playerTwo.GetComponent<PlayerMovement>().MoveLeft();
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 1 && player2Input == 3)
         {
@@ -116,7 +143,8 @@ public class TurnManager : MonoBehaviour
             playerOne.GetComponent<PlayerMovement>().MoveRight();
             playerTwo.GetComponent<PlayerMovement>().MoveRight();
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 2 && player2Input == 1)
         {
@@ -124,13 +152,15 @@ public class TurnManager : MonoBehaviour
             playerOne.GetComponent<PlayerMovement>().MoveRight();
             playerTwo.GetComponent<PlayerMovement>().MoveRight();
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 2 && player2Input == 2)
         {
             //Draw
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 2 && player2Input == 3)
         {
@@ -138,7 +168,8 @@ public class TurnManager : MonoBehaviour
             playerOne.GetComponent<PlayerMovement>().MoveLeft();
             playerTwo.GetComponent<PlayerMovement>().MoveLeft();
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 3 && player2Input == 1)
         {
@@ -146,7 +177,8 @@ public class TurnManager : MonoBehaviour
             playerOne.GetComponent<PlayerMovement>().MoveLeft();
             playerTwo.GetComponent<PlayerMovement>().MoveLeft();
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 3 && player2Input == 2)
         {
@@ -154,13 +186,67 @@ public class TurnManager : MonoBehaviour
             playerOne.GetComponent<PlayerMovement>().MoveRight();
             playerTwo.GetComponent<PlayerMovement>().MoveRight();
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
         else if (player1Input == 3 && player2Input == 3)
         {
             //Draw
             //Check for win
-            state = 0;
+            PlaceRPS(player1Input, player2Input);
+            //state = 0;
         }
+    }
+
+    void PlaceCheckMark(int side)
+    {
+        //0 = left, 1 = right
+        if(side == 0)
+        {
+            cMark1 = Instantiate(checkMark, new Vector3(-6, -4, 0), new Quaternion(0, 0, 0, 0));
+        }
+        else
+        {
+            cMark2 = Instantiate(checkMark, new Vector3(6, -4, 0), new Quaternion(0, 0, 0, 0));
+        }
+       
+    }
+
+    void PlaceRPS(int left, int right)
+    {
+        switch (left)
+        {
+            case 1:
+                clone1 = Instantiate(rock, new Vector3(-2, -4, 0), new Quaternion(0, 0, 0, 0));
+                break;
+            case 2:
+                clone1 = Instantiate(paper, new Vector3(-2, -4, 0), new Quaternion(0, 0, 0, 0));
+                break;
+            case 3:
+                clone1 = Instantiate(scissor, new Vector3(-2, -4, 0), new Quaternion(0, 0, 0, 0));
+                break;
+        }
+        switch (right)
+        {
+            case 1:
+                clone2 = Instantiate(rock, new Vector3(2, -4, 0), new Quaternion(0, 0, 0, 0));
+                break;
+            case 2:
+                clone2 = Instantiate(paper, new Vector3(2, -4, 0), new Quaternion(0, 0, 0, 0));
+                break;
+            case 3:
+                clone2 = Instantiate(scissor, new Vector3(2, -4, 0), new Quaternion(0, 0, 0, 0));
+                break;
+        }
+    }
+
+    IEnumerator DisplayResult()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(clone1);
+        Destroy(clone2);
+        Destroy(cMark1);
+        Destroy(cMark2);
+        state = 0;
     }
 }
