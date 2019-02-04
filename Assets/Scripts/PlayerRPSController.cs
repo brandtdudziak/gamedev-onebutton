@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRPCController : MonoBehaviour
+public class PlayerRPSController : MonoBehaviour
 {
     public KeyCode rockKey;
     public KeyCode paperKey;
     public KeyCode scissorsKey;
+    private String selection;
 
 
     // Start is called before the first frame update
