@@ -3059,6 +3059,18 @@ PrefabInstance:
       propertyPath: benchStartLength
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4895733640909547200, guid: c6eed6a2492952f41b552f274ea62a8a,
+        type: 3}
+      propertyPath: player1WinText
+      value: 
+      objectReference: {fileID: 2253654574906344247, guid: ad0cebfce24894c3392cc52198cdd1eb,
+        type: 3}
+    - target: {fileID: 4895733640909547200, guid: c6eed6a2492952f41b552f274ea62a8a,
+        type: 3}
+      propertyPath: player2WinText
+      value: 
+      objectReference: {fileID: 2154154936642379611, guid: 8ebc7b0b903684e70a0b92668301f4d5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6eed6a2492952f41b552f274ea62a8a, type: 3}
 --- !u!1001 &6979386439384021510

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class TurnManager : MonoBehaviour
     private int benchLeft;
     private int benchRight;
     private int playerPosition;
+    public GameObject player1WinText;
+    public GameObject player2WinText;
+    private bool won;
 
     // Start is called before the first frame update
     void Start()
@@ -30,98 +34,108 @@ public class TurnManager : MonoBehaviour
         benchLeft = 0;
         benchRight = benchStartLength;
         playerPosition = benchStartLength / 2;
+        won = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch(state)
+        if(won)
         {
-            case 0:
-                if(Input.GetKeyDown(KeyCode.A))
-                {
-                    state = 2;
-                    player1Input = 1;
-                    PlaceCheckMark(0);
-                }
-                if (Input.GetKeyDown(KeyCode.S))
-                {
-                    state = 2;
-                    player1Input = 2;
-                    PlaceCheckMark(0);
-                }
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    state = 2;
-                    player1Input = 3;
-                    PlaceCheckMark(0);
-                }
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    state = 1;
-                    player2Input = 1;
-                    PlaceCheckMark(1);
-                }
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    state = 1;
-                    player2Input = 2;
-                    PlaceCheckMark(1);
-                }
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    state = 1;
-                    player2Input = 3;
-                    PlaceCheckMark(1);
-                }
-                break;
-            case 1:
-                if (Input.GetKeyDown(KeyCode.A))
-                {
-                    state = 3;
-                    player1Input = 1;
-                    PlaceCheckMark(0);
-                }
-                if (Input.GetKeyDown(KeyCode.S))
-                {
-                    state = 3;
-                    player1Input = 2;
-                    PlaceCheckMark(0);
-                }
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    state = 3;
-                    player1Input = 3;
-                    PlaceCheckMark(0);
-                }
-                break;
-            case 2:
-                if (Input.GetKeyDown(KeyCode.LeftArrow))
-                {
-                    state = 3;
-                    player2Input = 1;
-                    PlaceCheckMark(1);
-                }
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    state = 3;
-                    player2Input = 2;
-                    PlaceCheckMark(1);
-                }
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                {
-                    state = 3;
-                    player2Input = 3;
-                    PlaceCheckMark(1);
-                }
-                break;
-            case 3:
-                RpsResolve();
-                StartCoroutine(DisplayResult());
-                state = 4;
-                break;
-            case 4:
-                break;
+            if(Input.GetKeyDown(KeyCode.Return)){
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        } else
+        {
+
+            switch(state)
+            {
+                case 0:
+                    if(Input.GetKeyDown(KeyCode.A))
+                    {
+                        state = 2;
+                        player1Input = 1;
+                        PlaceCheckMark(0);
+                    }
+                    if (Input.GetKeyDown(KeyCode.S))
+                    {
+                        state = 2;
+                        player1Input = 2;
+                        PlaceCheckMark(0);
+                    }
+                    if (Input.GetKeyDown(KeyCode.D))
+                    {
+                        state = 2;
+                        player1Input = 3;
+                        PlaceCheckMark(0);
+                    }
+                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        state = 1;
+                        player2Input = 1;
+                        PlaceCheckMark(1);
+                    }
+                    if (Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        state = 1;
+                        player2Input = 2;
+                        PlaceCheckMark(1);
+                    }
+                    if (Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        state = 1;
+                        player2Input = 3;
+                        PlaceCheckMark(1);
+                    }
+                    break;
+                case 1:
+                    if (Input.GetKeyDown(KeyCode.A))
+                    {
+                        state = 3;
+                        player1Input = 1;
+                        PlaceCheckMark(0);
+                    }
+                    if (Input.GetKeyDown(KeyCode.S))
+                    {
+                        state = 3;
+                        player1Input = 2;
+                        PlaceCheckMark(0);
+                    }
+                    if (Input.GetKeyDown(KeyCode.D))
+                    {
+                        state = 3;
+                        player1Input = 3;
+                        PlaceCheckMark(0);
+                    }
+                    break;
+                case 2:
+                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        state = 3;
+                        player2Input = 1;
+                        PlaceCheckMark(1);
+                    }
+                    if (Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        state = 3;
+                        player2Input = 2;
+                        PlaceCheckMark(1);
+                    }
+                    if (Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        state = 3;
+                        player2Input = 3;
+                        PlaceCheckMark(1);
+                    }
+                    break;
+                case 3:
+                    RpsResolve();
+                    StartCoroutine(DisplayResult());
+                    state = 4;
+                    break;
+                case 4:
+                    break;
+            }
         }
     }
 
@@ -271,10 +285,14 @@ public class TurnManager : MonoBehaviour
         if(playerPosition < benchLeft)
         {
             playerOne.GetComponent<PlayerMovement>().PlayerLose();
+            Instantiate(player2WinText);
+            won = true;
         }
         if(playerPosition > benchRight)
         {
             playerTwo.GetComponent<PlayerMovement>().PlayerLose();
+            Instantiate(player1WinText);
+            won = true;
         }
     }
 }
