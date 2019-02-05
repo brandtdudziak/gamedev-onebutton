@@ -19,11 +19,17 @@ public class TurnManager : MonoBehaviour
     private GameObject clone2;
     private GameObject cMark1;
     private GameObject cMark2;
+    public int benchStartLength = 6;
+    private int benchLeft;
+    private int benchRight;
+    private int playerPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        benchLeft = 0;
+        benchRight = benchStartLength;
+        playerPosition = benchStartLength / 2;
     }
 
     // Update is called once per frame
@@ -131,8 +137,7 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 1 && player2Input == 2)
         {
             //Player 2 Wins
-            playerOne.GetComponent<PlayerMovement>().MoveLeft();
-            playerTwo.GetComponent<PlayerMovement>().MoveLeft();
+            Player2Win();
             //Check for win
             PlaceRPS(player1Input, player2Input);
             //state = 0;
@@ -140,8 +145,7 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 1 && player2Input == 3)
         {
             //Player 1 Wins
-            playerOne.GetComponent<PlayerMovement>().MoveRight();
-            playerTwo.GetComponent<PlayerMovement>().MoveRight();
+            Player1Win();
             //Check for win
             PlaceRPS(player1Input, player2Input);
             //state = 0;
@@ -149,8 +153,7 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 2 && player2Input == 1)
         {
             //Player 1 Wins
-            playerOne.GetComponent<PlayerMovement>().MoveRight();
-            playerTwo.GetComponent<PlayerMovement>().MoveRight();
+            Player1Win();
             //Check for win
             PlaceRPS(player1Input, player2Input);
             //state = 0;
@@ -165,8 +168,7 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 2 && player2Input == 3)
         {
             //Player 2 Wins
-            playerOne.GetComponent<PlayerMovement>().MoveLeft();
-            playerTwo.GetComponent<PlayerMovement>().MoveLeft();
+            Player2Win();
             //Check for win
             PlaceRPS(player1Input, player2Input);
             //state = 0;
@@ -174,8 +176,7 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 3 && player2Input == 1)
         {
             //Player 2 Wins
-            playerOne.GetComponent<PlayerMovement>().MoveLeft();
-            playerTwo.GetComponent<PlayerMovement>().MoveLeft();
+            Player2Win();
             //Check for win
             PlaceRPS(player1Input, player2Input);
             //state = 0;
@@ -183,8 +184,7 @@ public class TurnManager : MonoBehaviour
         else if (player1Input == 3 && player2Input == 2)
         {
             //Player 1 Wins
-            playerOne.GetComponent<PlayerMovement>().MoveRight();
-            playerTwo.GetComponent<PlayerMovement>().MoveRight();
+            Player1Win();
             //Check for win
             PlaceRPS(player1Input, player2Input);
             //state = 0;
@@ -248,5 +248,29 @@ public class TurnManager : MonoBehaviour
         Destroy(cMark1);
         Destroy(cMark2);
         state = 0;
+    }
+
+    void Player1Win()
+    {
+        playerOne.GetComponent<PlayerMovement>().MoveRight();
+        playerTwo.GetComponent<PlayerMovement>().MoveRight();
+        playerPosition += 1;
+        CheckWin();
+    }
+
+    void Player2Win()
+    {
+        playerOne.GetComponent<PlayerMovement>().MoveLeft();
+        playerTwo.GetComponent<PlayerMovement>().MoveLeft();
+        playerPosition -= 1;
+        CheckWin();
+    }
+
+    void CheckWin()
+    {
+        // if player 1 < bench left
+            // player 1 loses
+        // if player 2 > bench right
+            // player 2 loses
     }
 }
