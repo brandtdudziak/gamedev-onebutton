@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1526706393292755360}
   - component: {fileID: 682911523974931678}
   - component: {fileID: 3107398500822246073}
+  - component: {fileID: 7917328003270254197}
   m_Layer: 0
   m_Name: OM2TD
   m_TagString: Untagged
@@ -129,5 +130,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4766fd80044d334abc49ef14cb29242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  rb2d: {fileID: 0}
+--- !u!114 &7917328003270254197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422042372664756611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5920c29ecb66c4ea6b8e6be46e1ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

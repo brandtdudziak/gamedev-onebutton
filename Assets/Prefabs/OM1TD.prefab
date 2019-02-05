@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1785039504958572251}
   - component: {fileID: 442280823732591952}
   - component: {fileID: 6094189925583410624}
+  - component: {fileID: 8075172036252253669}
   m_Layer: 0
   m_Name: OM1TD
   m_TagString: Untagged
@@ -133,3 +134,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rb2d: {fileID: 0}
+--- !u!114 &8075172036252253669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308214046375448506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5920c29ecb66c4ea6b8e6be46e1ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
