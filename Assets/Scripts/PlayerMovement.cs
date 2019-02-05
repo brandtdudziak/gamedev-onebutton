@@ -38,5 +38,6 @@ public class PlayerMovement : MonoBehaviour
     public void PlayerLose()
     {
         spriteRenderer.sprite = fallenSprite;
+        transform.position += Vector3.down * 5;
     }
 }

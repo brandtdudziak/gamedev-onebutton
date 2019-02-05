@@ -270,11 +270,11 @@ public class TurnManager : MonoBehaviour
     {
         if(playerPosition < benchLeft)
         {
-            // player 2 win
+            playerOne.GetComponent<PlayerMovement>().PlayerLose();
         }
         if(playerPosition > benchRight)
         {
-            // player 1 win
+            playerTwo.GetComponent<PlayerMovement>().PlayerLose();
         }
     }
 }
