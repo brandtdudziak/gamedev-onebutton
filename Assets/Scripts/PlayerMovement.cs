@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    SpriteRenderer spriteRenderer;
+    public Sprite fallenSprite;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,5 +33,10 @@ public class PlayerMovement : MonoBehaviour
     void Move(int dir)
     {
         transform.position += Vector3.right * 1 * dir;
+    }
+
+    public void PlayerLose()
+    {
+        spriteRenderer.sprite = fallenSprite;
     }
 }

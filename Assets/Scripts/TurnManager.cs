@@ -268,9 +268,13 @@ public class TurnManager : MonoBehaviour
 
     void CheckWin()
     {
-        // if player 1 < bench left
-            // player 1 loses
-        // if player 2 > bench right
-            // player 2 loses
+        if(playerPosition < benchLeft)
+        {
+            // player 2 win
+        }
+        if(playerPosition > benchRight)
+        {
+            // player 1 win
+        }
     }
 }
