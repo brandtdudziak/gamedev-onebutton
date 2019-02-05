@@ -20,19 +20,20 @@ public class TurnManager : MonoBehaviour
     private GameObject clone2;
     private GameObject cMark1;
     private GameObject cMark2;
-    public int benchStartLength = 6;
+    public int benchStartLength = 5;
     private int benchLeft;
     private int benchRight;
     private int playerPosition;
     public GameObject player1WinText;
     public GameObject player2WinText;
     private bool won;
+    public GameObject[] benchPieces;
 
     // Start is called before the first frame update
     void Start()
     {
         benchLeft = 0;
-        benchRight = benchStartLength;
+        benchRight = benchStartLength - 1;
         playerPosition = benchStartLength / 2;
         won = false;
     }
@@ -141,6 +142,8 @@ public class TurnManager : MonoBehaviour
 
     void RpsResolve()
     {
+        DestroyBench();
+
         if (player1Input == 1 && player2Input == 1)
         {
             //Draw
@@ -254,6 +257,16 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    void DestroyBench()
+    {
+        if(benchLeft != benchRight){
+            Destroy(benchPieces[benchLeft]);
+            Destroy(benchPieces[benchRight]);
+            benchLeft += 1;
+            benchRight -= 1;
+        }
+    }
+
     IEnumerator DisplayResult()
     {
         yield return new WaitForSeconds(3);
@@ -262,6 +275,7 @@ public class TurnManager : MonoBehaviour
         Destroy(cMark1);
         Destroy(cMark2);
         state = 0;
+        // SceneManager.LoadScene("Item Collection");
     }
 
     void Player1Win()
